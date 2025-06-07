@@ -14,7 +14,7 @@
 
 ```bash
 git clone https://github.com/ivanesterenkko/wiki-summary.git
-cd roof-backend
+cd wiki-summary
 ```
 
 2. Установите pre-commit:
