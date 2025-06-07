@@ -1,0 +1,37 @@
+services:
+  db:
+    image: postgres:15
+    container_name: wiki_db
+    hostname: wiki_db
+    env_file:
+      - ../src/.env
+    volumes:
+      - psql_wiki_data:/var/lib/postgresql/data
+    ports:
+      - 5438:5432
+
+  wiki_api:
+    image: wiki_image
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile
+    env_file:
+      - ../src/.env
+    container_name: wiki_api
+    hostname: wiki_api
+    depends_on:
+      db:
+        condition: service_started
+    command: sh -c "sleep 2 &&
+             alembic -c src/alembic.ini upgrade head &&
+             alembic -c src/alembic.ini stamp head &&
+             python src/main.py"
+    ports:
+      - 8000:8000
+
+volumes:
+  psql_wiki_data: {}
+
+networks:
+  wiki:
+    driver: bridge
