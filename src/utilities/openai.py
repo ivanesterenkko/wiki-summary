@@ -12,8 +12,11 @@ async def gpt_summarize(content: str) -> str:
         model="gpt-4.1",
         store=True,
         messages=[
-            {"role": "system", "content": "Сделай понятное summary для статьи Википедии на русском языке."},
-            {"role": "user", "content": content}
-        ]
+            {
+                "role": "system",
+                "content": "Сделай понятное summary для статьи Википедии на русском языке.",
+            },
+            {"role": "user", "content": content},
+        ],
     )
     return response.choices[0].message.content

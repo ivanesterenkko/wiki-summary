@@ -1,4 +1,4 @@
-# 🚀 Wiki Summary 
+# 🚀 Wiki Summary
 
 Асинхронный проект на FastAPI + SQLAlchemy с использование BeautifulSoup и OpenAI.
 

@@ -20,6 +20,7 @@ class OpenAiSettings(BaseSetting):
     OPENAI_SECRET_KEY: str
     OPENAI_URL: str
 
+
 class DBSettings(BaseSetting):
     POSTGRES_HOST: str
     POSTGRES_PORT: int

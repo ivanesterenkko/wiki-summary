@@ -142,5 +142,5 @@ max-args = 10
 "utilities/templates/*" = [
     "E501",
     "W293",
-    
+
 ]

@@ -1,8 +1,8 @@
 from typing import Optional
 
 from sqlalchemy import select
-from sqlalchemy.orm import selectinload
 from sqlalchemy.ext.asyncio import AsyncSession
+from sqlalchemy.orm import selectinload
 
 from crud.async_crud import BaseAsyncCRUD
 from models import Article
@@ -14,10 +14,10 @@ class CRUDArticle(BaseAsyncCRUD[Article, ArticleCreateDB, ArticleUpdateDB]):
         self, db: AsyncSession, url: str
     ) -> Optional[Article]:
         stmt = (
-        select(self.model)
-        .where(self.model.url == url)
-        .options(selectinload(self.model.children))
-    )
+            select(self.model)
+            .where(self.model.url == url)
+            .options(selectinload(self.model.children))
+        )
         result = await db.execute(stmt)
         return result.scalars().first()
 

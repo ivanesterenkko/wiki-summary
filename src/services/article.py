@@ -1,8 +1,6 @@
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from src.schemas.article import ArticleCreateDB
 from src.crud.article import crud_article
-
 from src.utilities.parser import WikiParserService
 
 
